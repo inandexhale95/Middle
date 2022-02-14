@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Views\" />
+    <ProjectReference Include="..\Middle.Services\Middle.Services.csproj" />
   </ItemGroup>
 
 </Project>
