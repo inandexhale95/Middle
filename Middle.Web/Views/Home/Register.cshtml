@@ -1,27 +1,40 @@
-﻿@{
+﻿@model User
+
+@{
     ViewData["Title"] = "Register";
 }
 
-<div class="position-static d-block py-5" tabindex="-1" role="dialog" id="modalSheet">
-    <div class="modal-dialog" role="document">
-        <div class="rounded-6 shadow">
-            <div class="border-bottom-0">
-                <h5 class="modal-title">Modal title</h5>
-            </div>
-            <form method="post" asp-controller="Home" asp-action="RegisterProcess">
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div>
-            </form>
+<div class="container p-3">
 
-            <div class="flex-nowrap p-0">
-                <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right"><strong>Yes, enable</strong></button>
+    <h4 class="text-center p-3 my-3 text-white">Register</h4>
+
+    <div class="d-flex row-cols-3 justify-content-center align-items-center">
+        <form asp-controller="Home" asp-action="Register">
+            <div class="col-lg form-floating">
+                <input type="text" asp-for="UserId" class="form-control" placeholder="ID">
+                <label class="form-label text-dark">ID</label>
+                <span class="text-danger" asp-validation-for="UserId"></span>
             </div>
-        </div>
+
+            <div class="mt-2"></div>
+
+            <div class="col-lg form-floating">
+                <input type="password" asp-for="UserPassword" class="form-control" placeholder="Password">
+                <label class="form-label text-dark">Password</label>
+                <span class="text-danger" asp-validation-for="UserPassword"></span>
+            </div>
+
+            <div class="mt-2"></div>
+
+            <div class="col-lg form-floating">
+                <input type="password" class="form-control" placeholder="Password Confirm">
+                <label class="form-label text-dark">Password Confirm</label>
+            </div>
+
+            <hr class="my-4">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Register</button>
+        </form>
     </div>
+    
 </div>
