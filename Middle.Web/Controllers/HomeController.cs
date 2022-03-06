@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Middle.Data.DataModels;
 using Middle.Services.Intferfaces;
 
@@ -30,8 +31,19 @@ namespace Middle.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                var user = _user.LoginUser(model);
+                if (user != null)
+                {
+                    HttpContext.Session.SetInt32("USER_KEY", user.UserNo);
+                    return RedirectToAction("Index", "Home");
+                }
             }
+            return View("Index", model);
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("USER_KEY");
             return RedirectToAction("Index", "Home");
         }
         

@@ -8,7 +8,7 @@ namespace Middle.Services.Intferfaces
     public interface IUser
     {
         void RegisterUser(User user);
-        void LoginUser(User user);
+        User LoginUser(User user);
         int Save();
     }
 }

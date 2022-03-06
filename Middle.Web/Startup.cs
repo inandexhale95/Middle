@@ -29,6 +29,8 @@ namespace Middle.Web
             });
             services.AddTransient<IGuestBoard, GuestBoardServices>();
             services.AddTransient<IUser, UserServices>();
+
+            services.AddSession();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -41,6 +43,8 @@ namespace Middle.Web
             app.UseRouting();
             app.UseStaticFiles();
             app.UseHttpsRedirection();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

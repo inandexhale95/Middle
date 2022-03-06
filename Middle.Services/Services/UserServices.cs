@@ -3,6 +3,7 @@ using Middle.Services.Context;
 using Middle.Services.Intferfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Middle.Services.Services
@@ -20,9 +21,11 @@ namespace Middle.Services.Services
             if (user == null) throw new ArgumentNullException("user is null");
             _context.Users.Add(user);
         }
-        public void LoginUser(User user)
+        public User LoginUser(User user)
         {
-            throw new NotImplementedException();
+            if (user == null) throw new ArgumentNullException("user is null");
+            return _context.Users.
+                FirstOrDefault(u => u.UserId.Equals(user.UserId) && u.UserPassword.Equals(user.UserPassword));
         }
         public int Save()
         {
